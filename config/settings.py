@@ -14,7 +14,8 @@ from pathlib import Path
 import os
 import environ
 from decouple import config
-import dj_database_url
+
+import dj_database_url # 追加
 
 from datetime import timedelta # JWTの有効期限を設定するために必要
 
@@ -93,7 +94,8 @@ if DEBUG:
     DATABASE_URL = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
     DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 else:
-    DATABASES = {'default': dj_database_url.config(conn_max_age=600, ssl_require=True)}
+    DATABASE_URL = env('DATABASE_URL')
+    DATABASES = {'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)}
 
 
 

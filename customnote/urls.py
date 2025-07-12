@@ -16,6 +16,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # アプリのURL
-    path('notes/<int:pk>/', views.CustomMenuDetailView.as_view(), name='custom_menu_detail'),
+    path('menus/<int:pk>/', views.CustomMenuDetailView.as_view(), name='custom_menu_detail'),
     path('', views.HomeView.as_view(), name='home'),
 ]
