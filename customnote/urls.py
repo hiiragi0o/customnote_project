@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import include, path
+from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from . import views
+
+
+rooter = routers.DefaultRouter()
+rooter.register('custom_menu', views.CustomMenuViewSet, basename='custom_menu')
 
 
 urlpatterns = [
@@ -15,7 +20,6 @@ urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # アプリのURL
-    path('menus/<int:pk>/', views.CustomMenuDetailView.as_view(), name='custom_menu_detail'),
-    path('', views.HomeView.as_view(), name='home'),
+    # アプリ用
+    path('', include(rooter.urls)),
 ]

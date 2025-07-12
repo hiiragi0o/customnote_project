@@ -6,7 +6,4 @@ urlpatterns = [
 
     # ユーザー登録のためのAPI
     path('api/customnote/', include('customnote.urls')),
-
-    # アプリ
-    path('customnote/', include('customnote.urls')),
 ]
