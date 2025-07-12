@@ -3,7 +3,7 @@ from rest_framework import generics, permissions
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, viewsets
 
 from .models import CustomUser, CustomMenu
 from .serializers import CustomUserSerializer, UserUpdateSerializer, CustomMenuSerializer
@@ -81,7 +81,7 @@ class UserDeleteAPIView(generics.DestroyAPIView):
 
 
 """ カスタムノートに関するAPIビューを定義 """
-class CustomMenuDetailView(generics.RetrieveAPIView):
+class CustomMenuViewSet(viewsets.ModelViewSet):
     queryset = CustomMenu.objects.all()
     serializer_class = CustomMenuSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly] # 認証済みユーザーのみアクセス可能
+    permission_classes = [IsAuthenticated] # 認証済みユーザーのみアクセス可能
