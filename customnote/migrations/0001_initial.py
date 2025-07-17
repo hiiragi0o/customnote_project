@@ -151,7 +151,7 @@ class Migration(migrations.Migration):
                 ("token", models.CharField(max_length=40)),
                 (
                     "access_datetime",
-                    models.DateTimeField(default=customnote.models.in_30_days),
+                    models.DateTimeField(default=None),
                 ),
                 (
                     "user",
