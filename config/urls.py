@@ -4,6 +4,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # ユーザー登録のためのAPI
+    # ユーザー認証用
     path('api/customnote/', include('customnote.urls')),
 ]

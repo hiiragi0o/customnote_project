@@ -5,6 +5,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from . import views
 
 
+# カスタムメニューのビューセットをインポート
 rooter = routers.DefaultRouter()
 rooter.register('custom_menu', views.CustomMenuViewSet, basename='custom_menu')
 
