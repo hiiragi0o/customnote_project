@@ -23,19 +23,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
 
         return user
 
-# サインイン用のシリアライザ
-class SignInSerializer(serializers.Serializer):
-    email = serializers.EmailField()
-    password = serializers.CharField(write_only=True, style={'input_type': 'password'})
-
-    def validate(self, data):
-        user = authenticate(username=data['email'], password=data['password'])
-        if user is None:
-            raise serializers.ValidationError('メールアドレスまたはパスワードが正しくありません。')
-        
-        data['user'] = user
-
-        return data
 
 # ユーザー情報更新用のシリアライザ
 class UserUpdateSerializer(serializers.ModelSerializer):
