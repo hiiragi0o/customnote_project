@@ -16,6 +16,7 @@ urlpatterns = [
     path('me/', views.UserInfoAPIView.as_view(), name='user_info'),
     path('me/update/', views.UserUpdateAPIView.as_view(), name='user_update'),
     path('me/delete/', views.UserDeleteAPIView.as_view(), name='user_delete'),
+    path('users/', views.UserListAPIView.as_view(), name='user_list'),
 
     # JWT認証用
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

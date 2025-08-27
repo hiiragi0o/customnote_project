@@ -44,6 +44,12 @@ class UserUpdateSerializer(serializers.ModelSerializer):
         return instance
 
 
+class UserLitsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+
 
 """ カスタムメニューのシリアライザ """
 class CustomMenuSerializer(serializers.ModelSerializer):

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'rest_framework', # Django REST framework
     'rest_framework_simplejwt', # JWT認証ライブラリ
+    'corsheaders', # CORS ライブラリ
 
     'customnote',  # カスタムノートアプリ
 ]
@@ -62,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', #追加行
+    'django.middleware.common.CommonMiddleware', #追加行
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -180,3 +183,8 @@ SIMPLE_JWT = {
     # 認証トークン
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken', )
 }
+
+# CORS（クロスオリジン）
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # ReactのURL
+]

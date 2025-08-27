@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework import status, viewsets
 
 from .models import CustomUser, CustomMenu
-from .serializers import CustomUserSerializer, UserUpdateSerializer, CustomMenuSerializer
+from .serializers import CustomUserSerializer, UserUpdateSerializer, CustomMenuSerializer, UserLitsSerializer
 
 """ Djangoのビューをインポート """
 from django.views.generic import View
@@ -78,6 +78,12 @@ class UserDeleteAPIView(generics.DestroyAPIView):
         self.perform_destroy(instance)
 
         return Response({"message": "Account deleted successfully."}, status=status.HTTP_204_NO_CONTENT)
+
+
+class UserListAPIView(generics.ListAPIView):
+    queryset = CustomUser.objects.all()
+    serializer_class = UserLitsSerializer
+    permission_classes = [AllowAny]
 
 
 """ カスタムノートに関するAPIビューを定義 """

@@ -10,3 +10,4 @@ djangorestframework==3.16.0 #追加
 djangorestframework-simplejwt==5.5.0 #追加
 
 dj-database-url==2.1.0 #追加
+django-cors-headers==4.7.0 #追加
